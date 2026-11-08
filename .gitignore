@@ -1,0 +1,58 @@
+# Compiled Java files
+*.class
+
+# Compiled C++ files
+*.o
+*.a
+
+# Compiled C files
+*.o
+*.a
+
+# Compiled Python files
+*.pyc
+
+
+# JAR/WAR/EAR files
+*.jar
+*.war
+*.ear
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.temp
+
+# VS Code settings
+.vscode/
+
+# IntelliJ IDEA
+.idea/
+*.iml
+
+# Eclipse
+.project
+.classpath
+.settings/
+
+# Build folders
+target/
+build/
+out/
+bin/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# git add .
+# git commit -m "Add LCXXXX solution"
+# git push
+
+# Linked List questions :-  
+# Week 1 → LC 206, 876, 21,83, 237, 203
+# Week 2 → LC 234, 160, 19, 142, 92, 24 (hard but important)
+# Week 3 → LC 143, 2, 328, 24, 148, 86
+# Week 4 → LC 138, 146, 430, 61, 23, 25
