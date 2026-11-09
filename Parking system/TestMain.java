@@ -25,28 +25,52 @@ public class TestMain {
     // Truck [GJ05CP5147] rate 50.0
     // Truck [GJ05PC4751] rate 50.0
 
-    public static void main(String[] args) {
-        ParkingSlot slot = new ParkingSlot(1, "MEDIUM");
-        Vehicle car = new Car("GJ01PC4751");
-        Vehicle bike = new Bike("GJ02PC4752");
+    // public static void main(String[] args) {
+    // ParkingSlot slot = new ParkingSlot(1, "MEDIUM");
+    // Vehicle car = new Car("GJ01PC4751");
+    // Vehicle bike = new Bike("GJ02PC4752");
 
-        System.out.println(slot); // Slot 1 [MEDIUM] - Free
-        System.out.println(slot.assign(car)); // true
-        System.out.println(slot); // Slot 1 [MEDIUM] - Car [GJ01PC4751]
-        System.out.println(slot.assign(bike)); // false
-        System.out.println(slot); // still the car
-        slot.free();
-        System.out.println(slot); // Slot 1 [MEDIUM] - Free
-        System.out.println(slot.assign(bike)); // true
-        System.out.println(slot); // Slot 1 [MEDIUM] - Bike [GJ02PC4752]
+    // System.out.println(slot); // Slot 1 [MEDIUM] - Free
+    // System.out.println(slot.assign(car)); // true
+    // System.out.println(slot); // Slot 1 [MEDIUM] - Car [GJ01PC4751]
+    // System.out.println(slot.assign(bike)); // false
+    // System.out.println(slot); // still the car
+    // slot.free();
+    // System.out.println(slot); // Slot 1 [MEDIUM] - Free
+    // System.out.println(slot.assign(bike)); // true
+    // System.out.println(slot); // Slot 1 [MEDIUM] - Bike [GJ02PC4752]
+    // }
+    // Output :
+    // Slot 1 [MEDIUM] - Free
+    // true
+    // Slot 1 [MEDIUM] - Car [GJ01PC4751]
+    // false
+    // Slot 1 [MEDIUM] - Car [GJ01PC4751]
+    // Slot 1 [MEDIUM] - Free
+    // true
+    // Slot 1 [MEDIUM] - Bike [GJ02PC4752]
+
+    public static void main(String[] args) {
+        Ticket t1 = new Ticket("GJ01PC4751", 1);
+        System.out.println(t1);
+        System.out.println(t1.getEntryTime() > 0);
+
+        Ticket t2 = new Ticket("GJ02PC4752", 2, 1000L);
+        System.out.println(t2.getEntryTime());
+        System.out.println(t2);
+
+        long threeHoursAgo = System.currentTimeMillis() - (3 * 3600000L);
+        Ticket t3 = new Ticket("GJ05CP5147", 3, threeHoursAgo);
+        long diff = System.currentTimeMillis() - t3.getEntryTime();
+        System.out.println(diff >= 10800000L);
+
+        System.out.println(t1.getSlotNumber() + " " + t1.getPlateNumber());
     }
 }
-//Output : 
-// Slot 1 [MEDIUM] - Free
+//Output :
+// Ticket [GJ01PC4751] slot1
 // true
-// Slot 1 [MEDIUM] - Car [GJ01PC4751]
-// false
-// Slot 1 [MEDIUM] - Car [GJ01PC4751]
-// Slot 1 [MEDIUM] - Free
+// 1000
+// Ticket [GJ02PC4752] slot2
 // true
-// Slot 1 [MEDIUM] - Bike [GJ02PC4752]
+// 1 GJ01PC4751
