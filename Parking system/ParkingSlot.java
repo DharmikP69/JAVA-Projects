@@ -1,11 +1,23 @@
 public class ParkingSlot {
-    private final int slotNumber; // final: set once in the constructor
-    private final String size; // final: set once in the constructor
-    private Vehicle occupiedVehicle; // NOT final: changes in assign() and free()
+    private final int slotNumber;
+    private final String size;
+    private Vehicle occupiedVehicle;
 
     ParkingSlot(int slotNumber, String size) {
         this.slotNumber = slotNumber;
         this.size = size;
+    }
+
+    int getSlotNumber() {
+        return slotNumber;
+    }
+
+    String getSize() {
+        return size;
+    }
+
+    Vehicle getOccupiedVehicle() {
+        return occupiedVehicle;
     }
 
     boolean isFree() {
@@ -31,5 +43,4 @@ public class ParkingSlot {
         }
         return "Slot " + slotNumber + " [" + size + "] - " + occupiedVehicle;
     }
-
 }
