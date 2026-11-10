@@ -1,3 +1,6 @@
+/**
+ * A car. Parking costs 20 per hour.
+ */
 public class Car extends Vehicle {
     
    Car(String plateNumber){

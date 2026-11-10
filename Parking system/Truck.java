@@ -1,3 +1,6 @@
+/**
+ * A truck. Parking costs 50 per hour.
+ */
 public class Truck extends Vehicle{
     
     Truck(String plateNumber){

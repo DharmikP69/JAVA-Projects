@@ -1,3 +1,7 @@
+/**
+ * Record of one parking visit: plate, slot number and entry time.
+ * Fields are final because a ticket never changes once issued.
+ */
 public class Ticket {
     private final String plateNumber;
     private final int slotNumber;

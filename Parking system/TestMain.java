@@ -91,3 +91,26 @@ public static void main(String[] args) {
         lot.showStatus();
     }
 }
+//Output :
+// Parked: Ticket [GJ01PC4751] slot 1
+// true
+// Parked: Ticket [GJ02PC4752] slot 2
+// true
+// Already parked: GJ01PC4751
+// false
+// Lot Full
+// false
+// No vehicle given
+// false
+// Slot 1 [MEDIUM] - Car [GJ01PC4751]
+// Slot 2 [MEDIUM] - Bike [GJ02PC4752]
+// Removed: GJ01PC4751
+// true
+// Ticket not found: GJ99XX0000
+// false
+// Slot 1 [MEDIUM] - Free
+// Slot 2 [MEDIUM] - Bike [GJ02PC4752]
+// Parked: Ticket [GJ05CP5147] slot 1
+// true
+// Slot 1 [MEDIUM] - Truck [GJ05CP5147]
+// Slot 2 [MEDIUM] - Bike [GJ02PC4752]

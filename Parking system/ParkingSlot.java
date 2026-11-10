@@ -1,3 +1,6 @@
+/**
+ * One parking space. Holds at most one vehicle at a time.
+ */
 public class ParkingSlot {
     private final int slotNumber;
     private final String size;
@@ -24,6 +27,12 @@ public class ParkingSlot {
         return occupiedVehicle == null;
     }
 
+    /**
+     * Parks the vehicle in this slot if it is free.
+     *
+     * @param v the vehicle to park
+     * @return true if parked; false if v is null or the slot is taken
+     */
     boolean assign(Vehicle v) {
         if (v == null || !isFree()) {
             return false;

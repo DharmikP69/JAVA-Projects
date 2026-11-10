@@ -1,6 +1,9 @@
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * Manages all slots and active tickets: park, remove and show status.
+ */
 public class ParkingLot {
     private final ArrayList<ParkingSlot> slots;
     private final HashMap<String, Ticket> activeTickets;
@@ -14,8 +17,9 @@ public class ParkingLot {
         }
     }
 
-    
-
+    /**
+     * @return the first free slot, or null if the lot is full
+     */
     private ParkingSlot findFreeSlot() {
         for (ParkingSlot s : slots) {
             if (s.isFree()) {
@@ -25,6 +29,13 @@ public class ParkingLot {
         return null;
     }
 
+    /**
+     * Parks a vehicle in the first free slot and issues a ticket.
+     *
+     * @param v the vehicle to park
+     * @return true if parked; false if v is null, the plate is already
+     *         parked, or the lot is full
+     */
     boolean park(Vehicle v) {
         if (v == null) {
             System.out.println("No vehicle given");
@@ -51,6 +62,12 @@ public class ParkingLot {
         return true;
     }
 
+    /**
+     * Removes a parked vehicle by plate number and frees its slot.
+     *
+     * @param plateNumber the plate, in any case, with or without spaces
+     * @return true if removed; false if no ticket exists for that plate
+     */
     boolean remove(String plateNumber) {
         if (plateNumber == null) {
             System.out.println("No plate given");

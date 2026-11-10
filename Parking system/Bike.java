@@ -1,3 +1,6 @@
+/**
+ * A bike. Parking costs 10 per hour.
+ */
 public class Bike extends Vehicle{
 
     Bike(String plateNumber){
