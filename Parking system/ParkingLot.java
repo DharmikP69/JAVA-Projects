@@ -74,7 +74,7 @@ public class ParkingLot {
             return false;
         }
 
-        String plate = plateNumber.trim().toUpperCase();
+        String plate = normalize(plateNumber);
         Ticket ticket = activeTickets.get(plate);
 
         if (ticket == null) {
@@ -82,7 +82,9 @@ public class ParkingLot {
             return false;
         }
 
-        // Wednesday: calculate the fee HERE, before freeing the slot
+        double fee = calculateFee(plate, System.currentTimeMillis());
+        System.out.println("Fee: " + fee);
+
         ParkingSlot slot = slots.get(ticket.getSlotNumber() - 1);
         slot.free();
         activeTickets.remove(plate);
@@ -94,5 +96,30 @@ public class ParkingLot {
         for (ParkingSlot s : slots) {
             System.out.println(s);
         }
+    }
+
+    private static String normalize(String plate) {
+        return plate.trim().toUpperCase();
+    }
+
+    static long billedHours(long entryTime, long exitTime) {
+        long durationMs = exitTime - entryTime;
+        long hours = (long) Math.ceil(durationMs / 3600000.0);
+        return Math.max(1, hours);
+    }
+
+    double calculateFee(String plateNumber, long exitTime) {
+        if (plateNumber == null) {
+            return -1;
+        }
+        String plate = normalize(plateNumber);
+        Ticket ticket = activeTickets.get(plate);
+        if (ticket == null) {
+            return -1;
+        }
+        ParkingSlot slot = slots.get(ticket.getSlotNumber() - 1);
+        Vehicle vehicle = slot.getOccupiedVehicle();
+        long hours = billedHours(ticket.getEntryTime(), exitTime);
+        return hours * vehicle.hourlyRate();
     }
 }

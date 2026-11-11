@@ -1,4 +1,4 @@
-public class TestMain {
+//------------Vehicles testing------------
     // public static void main(String[] args) {
     // This main is particular for the vehicle testing
     // Vehicle[] vehicles = {
@@ -17,7 +17,7 @@ public class TestMain {
 
     // }
 
-    // Output :
+// Output :
     // Car [GJ01PC4751] rate 20.0
     // Car [GJ01PC4752] rate 20.0
     // Bike [GJ02PC4752] rate 10.0
@@ -25,6 +25,7 @@ public class TestMain {
     // Truck [GJ05CP5147] rate 50.0
     // Truck [GJ05PC4751] rate 50.0
 
+//------------Parking slot testing------------
     // public static void main(String[] args) {
     // ParkingSlot slot = new ParkingSlot(1, "MEDIUM");
     // Vehicle car = new Car("GJ01PC4751");
@@ -40,7 +41,8 @@ public class TestMain {
     // System.out.println(slot.assign(bike)); // true
     // System.out.println(slot); // Slot 1 [MEDIUM] - Bike [GJ02PC4752]
     // }
-    // Output :
+
+// Output :
     // Slot 1 [MEDIUM] - Free
     // true
     // Slot 1 [MEDIUM] - Car [GJ01PC4751]
@@ -50,6 +52,7 @@ public class TestMain {
     // true
     // Slot 1 [MEDIUM] - Bike [GJ02PC4752]
 
+//------------Ticket testing------------
     // public static void main(String[] args) {
     //     Ticket t1 = new Ticket("GJ01PC4751", 1);
     //     System.out.println(t1);
@@ -73,24 +76,26 @@ public class TestMain {
 // Ticket [GJ02PC4752] slot2
 // true
 // 1 GJ01PC4751
-public static void main(String[] args) {
-        ParkingLot lot = new ParkingLot(2);
 
-        System.out.println(lot.park(new Car("GJ01PC4751")));
-        System.out.println(lot.park(new Bike("GJ02PC4752")));
-        System.out.println(lot.park(new Car("gj01pc4751")));
-        System.out.println(lot.park(new Truck("GJ05CP5147")));
-        System.out.println(lot.park(null));
-        lot.showStatus();
+//------------Parking lot Testing------------
+// public static void main(String[] args) {
+//         ParkingLot lot = new ParkingLot(2);
 
-        System.out.println(lot.remove("gj01pc4751"));
-        System.out.println(lot.remove("GJ99XX0000"));
-        lot.showStatus();
+//         System.out.println(lot.park(new Car("GJ01PC4751")));
+//         System.out.println(lot.park(new Bike("GJ02PC4752")));
+//         System.out.println(lot.park(new Car("gj01pc4751")));
+//         System.out.println(lot.park(new Truck("GJ05CP5147")));
+//         System.out.println(lot.park(null));
+//         lot.showStatus();
 
-        System.out.println(lot.park(new Truck("GJ05CP5147")));
-        lot.showStatus();
-    }
-}
+//         System.out.println(lot.remove("gj01pc4751"));
+//         System.out.println(lot.remove("GJ99XX0000"));
+//         lot.showStatus();
+
+//         System.out.println(lot.park(new Truck("GJ05CP5147")));
+//         lot.showStatus();
+// }
+
 //Output :
 // Parked: Ticket [GJ01PC4751] slot 1
 // true
@@ -114,3 +119,63 @@ public static void main(String[] args) {
 // true
 // Slot 1 [MEDIUM] - Truck [GJ05CP5147]
 // Slot 2 [MEDIUM] - Bike [GJ02PC4752]
+
+
+public class TestMain {
+    public static void main(String[] args) {
+
+        //------------BilledHours (entry time = 0)------------
+        System.out.println(ParkingLot.billedHours(0, 600000L));
+        System.out.println(ParkingLot.billedHours(0, 3600000L));
+        System.out.println(ParkingLot.billedHours(0, 3660000L));
+        System.out.println(ParkingLot.billedHours(0, 9300000L));
+        System.out.println(ParkingLot.billedHours(0, 0L));
+
+        //------------CalculateFee------------
+        ParkingLot lot = new ParkingLot(3);
+        lot.park(new Car("GJ01PC4751"));
+        lot.park(new Bike("GJ02PC4752"));
+        lot.park(new Truck("GJ05CP5147"));
+
+        long now = System.currentTimeMillis();
+        long later = now + 2 * 3600000L + 35 * 60000L;
+
+        System.out.println(lot.calculateFee("GJ01PC4751", later));
+        System.out.println(lot.calculateFee("GJ02PC4752", later));
+        System.out.println(lot.calculateFee("GJ05CP5147", later));
+        System.out.println(lot.calculateFee("  gj01pc4751 ", later));
+        System.out.println(lot.calculateFee("GJ99XX0000", later));
+        System.out.println(lot.calculateFee(null, later));
+        System.out.println(lot.calculateFee("GJ01PC4751", now));
+
+        //------------Remove with fee------------
+        System.out.println(lot.remove("gj01pc4751"));
+        System.out.println(lot.calculateFee("GJ01PC4751", later));
+        System.out.println(lot.remove("GJ01PC4751"));
+        lot.showStatus();
+    }
+}
+//Outout :
+// 1
+// 1
+// 2
+// 3
+// 1
+// Parked: Ticket [GJ01PC4751] slot 1
+// Parked: Ticket [GJ02PC4752] slot 2
+// Parked: Ticket [GJ05CP5147] slot 3
+// 60.0
+// 30.0
+// 150.0
+// 60.0
+// -1.0
+// -1.0
+// 20.0
+// Removed: GJ01PC4751
+// true
+// -1.0
+// Ticket not found: GJ01PC4751
+// false
+// Slot 1 [MEDIUM] - Free
+// Slot 2 [MEDIUM] - Bike [GJ02PC4752]
+// Slot 3 [MEDIUM] - Truck [GJ05CP5147]

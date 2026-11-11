@@ -54,5 +54,6 @@ java Main
 
 ## Possible improvements
 - Slot sizes (a Truck needs a large slot)
-- A Truck needing 2 consecutive free slots
+- A Truck needing 2 consecutive free slots 
 - Saving tickets to a file
+- Plate number in [state_code-rto_number-character_combination-four_digit_code]
