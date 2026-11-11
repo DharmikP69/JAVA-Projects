@@ -35,6 +35,10 @@ java Main
 ```
 
 ## Sample output
+
+A session that parks a truck and a bike, shows the status, and removes both vehicles with their fees:
+
+```text
 ===== Parking System =====
 1. Park
 2. Remove
@@ -86,6 +90,9 @@ Choice: 2
 Plate number: mh01pc5555
 Fee: 50.0
 Removed: MH01PC5555
+```
+
+Plates typed in lowercase are stored in uppercase. A stay under one hour is billed as 1 hour (Truck 50, Bike 10).
 
 ## Design decisions
 - Tickets are keyed by plate number, so there is no separate ticket ID.
