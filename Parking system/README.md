@@ -35,7 +35,57 @@ java Main
 ```
 
 ## Sample output
-(paste real console output here)
+===== Parking System =====
+1. Park
+2. Remove
+3. Show Status
+4. Exit
+Choice: 1
+Vehicle type (1 Car, 2 Bike, 3 Truck): 3
+Plate number: mh01pc5555
+Parked: Ticket [MH01PC5555] slot 1
+
+===== Parking System =====
+1. Park
+2. Remove
+3. Show Status
+4. Exit
+Choice: 3
+Slot 1 [MEDIUM] - Truck [MH01PC5555]
+Slot 2 [MEDIUM] - Free
+Slot 3 [MEDIUM] - Free
+Slot 4 [MEDIUM] - Free
+Slot 5 [MEDIUM] - Free
+
+===== Parking System =====
+1. Park
+2. Remove
+3. Show Status
+4. Exit
+Choice: 1
+Vehicle type (1 Car, 2 Bike, 3 Truck): 2
+Plate number: kl90rt5678
+Parked: Ticket [KL90RT5678] slot 2
+
+===== Parking System =====
+1. Park
+2. Remove
+3. Show Status
+4. Exit
+Choice: 2
+Plate number: kl90rt5678
+Fee: 10.0
+Removed: KL90RT5678
+
+===== Parking System =====
+1. Park
+2. Remove
+3. Show Status
+4. Exit
+Choice: 2
+Plate number: mh01pc5555
+Fee: 50.0
+Removed: MH01PC5555
 
 ## Design decisions
 - Tickets are keyed by plate number, so there is no separate ticket ID.
